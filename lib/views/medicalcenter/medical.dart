@@ -36,13 +36,20 @@ class _MedicalViewState extends State<MedicalView> {
                       fontStyle: FontStyle.normal)),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 25),
-              child: ButonView(
-                  onpressed: () {
-                    Navigator.pushNamed(context, "medicalSer");
-                  },
-                  text: TextConstant.ExpYou),
-            )
+                padding: const EdgeInsets.only(bottom: 25),
+                child: ButonView(
+                    onpressed: () {
+                      Navigator.pushNamed(context, "medicalSer");
+                    },
+                    text: TextConstant.ExpYou,
+                    Color: ColorConstant.whiteColor)
+                // ButonView(
+
+                //     onpressed: () {
+
+                //     },
+                // ),
+                )
           ],
         ),
       ),

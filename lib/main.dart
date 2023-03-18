@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:helpingproject/screens/login_otp.dart';
 import 'package:helpingproject/screens/map_screen.dart';
 import 'package:helpingproject/screens/splash.dart';
 import 'package:helpingproject/views/firestation/firebrigade.dart';
@@ -39,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: "splash",
       routes: {
         "splash": (context) => SplashView(),
+        "login": (context) => LoginView(),
         "home": (context) => ServicView(),
         "fire": (context) => FireBrigadeView(),
         "fireSer": (context) => FireServiceView(),
