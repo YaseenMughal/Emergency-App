@@ -14,17 +14,29 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromARGB(255, 44, 43, 43),
       appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Color.fromARGB(255, 44, 43, 43),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back_ios_sharp),
-            color: ColorConstant.whiteColor,
-          )),
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        backgroundColor: Color.fromARGB(255, 44, 43, 43),
+        leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.keyboard_double_arrow_left_outlined,
+              size: 45,
+            ),
+            color: ColorConstant.whiteColor),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.keyboard_double_arrow_right_outlined,
+                size: 45,
+              ),
+              color: ColorConstant.whiteColor),
+        ],
+      ),
       body: Column(
         children: [
           Padding(
@@ -79,13 +91,23 @@ class LoginView extends StatelessWidget {
               children: [
                 ButonView(
                     onpressed: () {
-                      Navigator.pushNamed(context, "home");
+                      if (_PinPutcontroller.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("All fields are required !")));
+                      } else {
+                        Navigator.pushNamed(context, "home");
+                      }
                     },
                     text: TextConstant.ResC,
                     Color: ColorConstant.whiteColor),
                 ButonView(
                     onpressed: () {
-                      Navigator.pushNamed(context, "home");
+                      if (_PinPutcontroller.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("All fields are required !")));
+                      } else {
+                        Navigator.pushNamed(context, "home");
+                      }
                     },
                     text: TextConstant.SubC,
                     Color: ColorConstant.whiteColor)
@@ -97,3 +119,48 @@ class LoginView extends StatelessWidget {
     );
   }
 }
+
+
+// Widget loginBtn() {
+//     return ElevatedButton(
+//       style: ElevatedButton.styleFrom(
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(10),
+//             side: BorderSide(color: Colors.black),
+//           ),
+//           backgroundColor: Colors.white),
+//       child: const Text(
+//         "Login",
+//         style: TextStyle(fontSize: 18, color: Colors.black),
+//       ),
+//       onPressed: () async {
+//         final snackBarr = snackBar();
+
+//         final obj = await SharedPreferences.getInstance();
+
+//         String? userID = obj.getString("userName");
+//         String? password = obj.getString("password");
+
+//         if (tfcUserName.text == userID && tfcPass.text == password) {
+//           Navigator.pushNamed(context, '/dashboard');
+//           tfcUserName.text = "";
+//           tfcPass.text = "";
+//         } else {
+//           ScaffoldMessenger.of(context).showSnackBar(snackBarr);
+//         }
+//       },
+//     );
+//   }
+
+// SnackBar snackBar() {
+//     return SnackBar(
+//       content: const Text('Incorrect Id and Password'),
+//       action: SnackBarAction(
+//         label: 'Undo',
+//         onPressed: () {
+//           // Add your code here to undo the action
+//         },
+//       ),
+//     );
+//   }
+// }

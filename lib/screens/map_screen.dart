@@ -19,13 +19,20 @@ class _ServicViewState extends State<ServicView> {
     mapController = controller;
   }
 
+  final List<Marker> _marker = <Marker>[
+    Marker(
+        markerId: MarkerId('1'),
+        position: LatLng(45.521563, -122.677433),
+        infoWindow: InfoWindow(title: 'The Tittle of The Marker'))
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Google Map !',
-          style: TextStyle(color: Color.fromARGB(255, 8, 128, 12)),
+          style: TextStyle(color: Color.fromARGB(255, 8, 1285, 12)),
         ),
         elevation: 10,
         centerTitle: true,
@@ -33,6 +40,7 @@ class _ServicViewState extends State<ServicView> {
       ),
       body: GoogleMap(
         onMapCreated: _onMapCreated,
+        markers: Set<Marker>.of(_marker),
         initialCameraPosition: CameraPosition(
           target: _center,
           zoom: 11.0,
